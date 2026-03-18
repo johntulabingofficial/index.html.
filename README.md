@@ -1,1 +1,314 @@
-# index.html.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Youth Leaders Organization – YOLO</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--navy:#1e3a9f;--teal:#0d6b35;--gold:#f0a500;--light:#f0f4fc;--white:#fff;}
+  body{font-family:'Segoe UI',sans-serif;color:#222;background:var(--white);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--navy);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .logo-circle{width:42px;height:42px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:var(--white);letter-spacing:-1px;}
+  .nav-brand{color:var(--white);font-weight:700;font-size:17px;line-height:1.2;}
+  .nav-brand span{color:var(--gold);font-size:11px;display:block;font-weight:400;letter-spacing:1px;}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{color:#ccd6e0;font-size:14px;transition:.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--navy)!important;padding:8px 18px;border-radius:20px;font-weight:700;font-size:13px!important;}
+  .nav-cta:hover{background:#d49200!important;color:var(--white)!important;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#1e4d40 100%);color:var(--white);padding:90px 40px 80px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-80px;width:400px;height:400px;background:rgba(42,127,111,.25);border-radius:50%;}
+  .hero::after{content:'';position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;background:rgba(240,165,0,.12);border-radius:50%;}
+  .hero-tag{display:inline-block;background:rgba(240,165,0,.2);color:var(--gold);border:1px solid var(--gold);border-radius:20px;font-size:12px;padding:4px 14px;letter-spacing:1px;margin-bottom:20px;}
+  .hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:16px;}
+  .hero h1 span{color:var(--gold);}
+  .tagline{font-size:18px;color:#a8c7bb;font-style:italic;margin-bottom:36px;}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--gold);color:var(--navy);padding:13px 30px;border-radius:30px;font-weight:700;font-size:15px;transition:.2s;}
+  .btn-primary:hover{background:#d49200;transform:translateY(-2px);}
+  .btn-outline{border:2px solid rgba(255,255,255,.5);color:var(--white);padding:13px 30px;border-radius:30px;font-size:15px;transition:.2s;}
+  .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.1);}
+  .hero-meta{margin-top:50px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+  .hero-stat{text-align:center;}
+  .hero-stat strong{display:block;font-size:26px;color:var(--gold);}
+  .hero-stat span{font-size:12px;color:#8ab0a4;letter-spacing:.5px;}
+
+  /* SECTION COMMON */
+  section{padding:72px 40px;}
+  .section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:8px;}
+  .section-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:var(--navy);margin-bottom:12px;}
+  .section-sub{color:#555;max-width:600px;line-height:1.7;margin-bottom:40px;}
+  .centered{text-align:center;}
+  .centered .section-sub{margin-left:auto;margin-right:auto;}
+
+  /* ABOUT */
+  .about{background:var(--light);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;max-width:1100px;margin:0 auto;}
+  .about-card{background:var(--white);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,.07);}
+  .about-card h3{color:var(--teal);font-size:16px;margin-bottom:8px;}
+  .about-card p{color:#555;font-size:14px;line-height:1.7;}
+  .about-cards{display:flex;flex-direction:column;gap:16px;}
+  .about-info{font-size:14px;line-height:1.9;color:#444;}
+  .about-info strong{color:var(--navy);}
+  .badge{display:inline-block;background:#e6f4f1;color:var(--teal);border-radius:20px;font-size:12px;padding:3px 12px;margin:4px 4px 0 0;font-weight:600;}
+
+  /* VALUES */
+  .values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+  .value-card{background:var(--white);border:2px solid #e8eef4;border-radius:14px;padding:24px 18px;text-align:center;transition:.2s;}
+  .value-card:hover{border-color:var(--teal);box-shadow:0 6px 20px rgba(42,127,111,.12);transform:translateY(-3px);}
+  .value-icon{font-size:30px;margin-bottom:10px;}
+  .value-card h4{color:var(--navy);font-size:14px;font-weight:700;}
+
+  /* BOARD */
+  .board{background:var(--light);}
+  .board-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;max-width:1100px;margin:0 auto;}
+  .board-card{background:var(--white);border-radius:14px;padding:22px 16px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:.2s;}
+  .board-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+  .avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--navy));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:18px;margin:0 auto 12px;}
+  .avatar.vacant{background:#ddd;color:#999;}
+  .board-card h4{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:4px;}
+  .board-card p{font-size:12px;color:var(--teal);font-weight:600;}
+  .board-card.vacant-card h4{color:#aaa;}
+  .board-card.vacant-card p{color:#bbb;}
+
+  /* ACTIVITIES */
+  .activities-tabs{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap;}
+  .tab{padding:8px 20px;border-radius:20px;border:2px solid #dde4ed;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;background:var(--white);color:#555;}
+  .tab.active{background:var(--teal);border-color:var(--teal);color:var(--white);}
+  .act-list{display:grid;gap:14px;max-width:900px;}
+  .act-item{background:var(--white);border-left:4px solid var(--teal);border-radius:0 10px 10px 0;padding:16px 20px;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+  .act-item.attended{border-left-color:var(--gold);}
+  .act-item h4{color:var(--navy);font-size:14px;font-weight:700;margin-bottom:4px;}
+  .act-item p{font-size:13px;color:#777;}
+
+  /* JOIN */
+  .join{background:linear-gradient(135deg,var(--navy),#1e4d40);color:var(--white);text-align:center;}
+  .join .section-title{color:var(--white);}
+  .join .section-sub{color:#a8c7bb;margin-bottom:32px;}
+  .steps{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:40px;}
+  .step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:18px 16px;width:180px;text-align:center;}
+  .step-num{width:32px;height:32px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+  .step p{font-size:12px;color:#c8ddd8;line-height:1.5;}
+  .eligibility{background:rgba(255,255,255,.07);border-radius:14px;padding:24px 28px;max-width:600px;margin:0 auto 36px;text-align:left;}
+  .eligibility h4{color:var(--gold);font-size:14px;margin-bottom:12px;}
+  .eligibility li{font-size:13px;color:#c8ddd8;margin-bottom:6px;line-height:1.5;list-style:none;padding-left:18px;position:relative;}
+  .eligibility li::before{content:'✓';position:absolute;left:0;color:var(--gold);}
+
+  /* CONTACT */
+  .contact{background:var(--light);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:900px;margin:0 auto;align-items:start;}
+  .contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;}
+  .contact-icon{width:40px;height:40px;background:var(--teal);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .contact-item h4{font-size:13px;color:var(--navy);font-weight:700;}
+  .contact-item p{font-size:13px;color:#666;}
+  .dates-list{background:var(--white);border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+  .dates-list h4{color:var(--navy);font-size:15px;font-weight:700;margin-bottom:14px;}
+  .date-item{display:flex;gap:14px;align-items:center;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #f0f0f0;}
+  .date-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .date-badge{background:var(--navy);color:var(--white);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;white-space:nowrap;}
+  .date-item p{font-size:13px;color:#555;}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:#8ab0c4;text-align:center;padding:30px 20px;font-size:13px;}
+  footer strong{color:var(--gold);}
+
+  @media(max-width:760px){
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    nav{padding:0 20px;}
+    .nav-links{display:none;}
+    section{padding:50px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://i.imgur.com/placeholder.png" alt="YOLO Logo" id="yolo-logo" style="height:48px;width:auto;object-fit:contain;display:none;"/>
+    <canvas id="logoCanvas" width="48" height="48" style="display:block;"></canvas>
+    <div class="nav-brand">Youth Leaders Organization <span>EL SALVADOR CITY · MISAMIS ORIENTAL</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#board">Board</a>
+    <a href="#activities">Activities</a>
+    <a href="#join">Join Us</a>
+    <a href="#contact">Contact</a>
+    <a href="https://forms.gle/5cSyioHg3jkzKzUL8" target="_blank" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img id="heroLogo" style="height:130px;width:auto;margin-bottom:20px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.35));display:block;margin-left:auto;margin-right:auto;" alt="YOLO Logo"/>
+  <div class="hero-tag">NYC-Registered · URN: YO-11385-070225</div>
+  <h1>Leading with Purpose.<br><span>Serving the Youth.</span></h1>
+  <p class="tagline">Para sa Kabataan, Mula sa Kabataan</p>
+  <div class="hero-btns">
+    <a href="https://forms.gle/5cSyioHg3jkzKzUL8" target="_blank" class="btn-primary">Apply for Membership</a>
+    <a href="#about" class="btn-outline">Learn More</a>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-stat"><strong>2024</strong><span>FOUNDED</span></div>
+    <div class="hero-stat"><strong>6+</strong><span>ACTIVITIES ORGANIZED</span></div>
+    <div class="hero-stat"><strong>15–30</strong><span>AGE RANGE</span></div>
+    <div class="hero-stat"><strong>Misamis Oriental</strong><span>COVERAGE AREA</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">A Youth-Led Movement for Change</h2>
+      <p class="about-info">
+        <strong>Youth Leaders Organization (YOLO)</strong>, formerly known as Barog Kabataan, is a community-based youth organization founded on <strong>September 24, 2024</strong> in El Salvador City, Misamis Oriental by <strong>John Loyd Tulabing</strong>.<br><br>
+        Our programs and operations extend throughout the entire Province of Misamis Oriental, reaching young people aged 15 to 30 who are passionate about leadership, advocacy, and community service.<br><br>
+        We are registered under the Youth Organization Registration Program (YORP) of the National Youth Commission.
+      </p>
+      <br>
+      <span class="badge">Community-Based YO</span>
+      <span class="badge">YORP Registered</span>
+      <span class="badge">El Salvador City</span>
+      <span class="badge">Misamis Oriental</span>
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <h3>🎯 Our Vision</h3>
+        <p>A generation of empowered, principled, and socially responsible youth leaders who are active contributors to the development of their communities and the nation.</p>
+      </div>
+      <div class="about-card">
+        <h3>🚀 Our Mission</h3>
+        <p>Cultivating youth leadership and civic engagement, promoting human rights, advancing mental health awareness, and improving access to quality education through community-based programs and partnerships.</p>
+      </div>
+      <div class="about-card">
+        <h3>📋 Registration Details</h3>
+        <p><strong>Founded:</strong> September 24, 2024 &nbsp;|&nbsp; <strong>YORP Reg.:</strong> July 2, 2025<br><strong>URN:</strong> YO-11385-070225 &nbsp;|&nbsp; <strong>Type:</strong> Community-Based YO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="background:var(--white);padding:60px 40px;">
+  <div class="centered">
+    <p class="section-label">What Drives Us</p>
+    <h2 class="section-title">Our Core Values</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card"><div class="value-icon">🤝</div><h4>Servant Leadership</h4></div>
+    <div class="value-card"><div class="value-icon">⚖️</div><h4>Integrity</h4></div>
+    <div class="value-card"><div class="value-icon">🌐</div><h4>Inclusivity</h4></div>
+    <div class="value-card"><div class="value-icon">🏘️</div><h4>Social Responsibility</h4></div>
+    <div class="value-card"><div class="value-icon">📚</div><h4>Continuous Learning & Growth</h4></div>
+  </div>
+</section>
+
+<!-- BOARD -->
+<section class="board" id="board">
+  <div class="centered" style="margin-bottom:36px;">
+    <p class="section-label">Leadership</p>
+    <h2 class="section-title">Board of Directors</h2>
+    <p class="section-sub" style="margin:0 auto;">The Board provides direction, policy-making, and overall management of YOLO.</p>
+  </div>
+  <div class="board-grid">
+    <div class="board-card"><div class="avatar">JT</div><h4>John Loyd Tulabing</h4><p>Executive Director</p></div>
+    <div class="board-card"><div class="avatar">RP</div><h4>Rodel L. Picot</h4><p>Deputy Executive Director</p></div>
+    <div class="board-card vacant-card"><div class="avatar vacant">—</div><h4>Vacant</h4><p>Secretary General</p></div>
+    <div class="board-card"><div class="avatar">ML</div><h4>May Ann Lumahang</h4><p>Finance Director</p></div>
+    <div class="board-card vacant-card"><div class="avatar vacant">—</div><h4>Vacant</h4><p>Auditor General</p></div>
+    <div class="board-card vacant-card"><div class="avatar vacant">—</div><h4>Vacant</h4><p>Communications & Media Director</p></div>
+    <div class="board-card"><div class="avatar">NG</div><h4>Nicole Angela Gemilo</h4><p>Advocacy Director I – Mental Health</p></div>
+    <div class="board-card"><div class="avatar">JJ</div><h4>Jade Jabonga</h4><p>Advocacy Director II – Human Rights</p></div>
+    <div class="board-card"><div class="avatar">JO</div><h4>Janna Bee Oco</h4><p>Advocacy Director III – Education</p></div>
+    <div class="board-card vacant-card"><div class="avatar vacant">—</div><h4>Vacant</h4><p>Internal Affairs Director</p></div>
+    <div class="board-card"><div class="avatar">SS</div><h4>Sarah Mae Salvo</h4><p>External Affairs Director</p></div>
+    <div class="board-card vacant-card"><div class="avatar vacant">—</div><h4>Vacant</h4><p>YORP Representative</p></div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities" style="background:var(--white);">
+  <p class="section-label">What We've Done</p>
+  <h2 class="section-title">Activities & Events</h2>
+  <div class="activities-tabs">
+    <div class="tab active" onclick="showTab('organized',this)">Organized</div>
+    <div class="tab" onclick="showTab('attended',this)">Attended</div>
+  </div>
+  <div id="organized" class="act-list">
+    <div class="act-item"><h4>1st YOLO Convergence (General Assembly + Membership Orientation)</h4><p>July 8, 2025</p></div>
+    <div class="act-item"><h4>Nutrition Education Among Adolescents</h4><p>July 8, 2025 · In partnership with LYDO and City Nutrition Office</p></div>
+    <div class="act-item"><h4>YOLO × CHR: Basic Human Rights and Mandate of the CHR</h4><p>August 18, 2025</p></div>
+    <div class="act-item"><h4>Donation Drive for Molugan Flood Victims</h4><p>November 10, 2025</p></div>
+    <div class="act-item"><h4>YOLO × KPL: Educational Discussion on Developing Methods of Leadership</h4><p>December 13, 2025</p></div>
+    <div class="act-item"><h4>Educational Discussion on the Training of Instructors</h4><p>February 12, 2026</p></div>
+  </div>
+  <div id="attended" class="act-list" style="display:none;">
+    <div class="act-item attended"><h4>Project Equip: Gender Sensitivity Workshop</h4><p>July 17, 2025 · Organized by Tagoloan Gender Advocacy Group (TAGAD)</p></div>
+    <div class="act-item attended"><h4>Community Education with Anak OFWs</h4><p>July 18, 2025</p></div>
+    <div class="act-item attended"><h4>13th Global Youth Summit</h4><p>August 31, 2025</p></div>
+    <div class="act-item attended"><h4>YOUTH IDEALS: Empowering the Youth. Building Futures. Transforming Communities.</h4><p>September 9, 2025</p></div>
+    <div class="act-item attended"><h4>Trillion Peso March</h4><p>September 21, 2025</p></div>
+    <div class="act-item attended"><h4>4th Brown Bag Session on Rights Literacy</h4><p>November 12, 2025 · Ateneo de Cagayan – Xavier University</p></div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <p class="section-label" style="color:var(--gold);">Be Part of the Movement</p>
+  <h2 class="section-title">Join YOLO</h2>
+  <p class="section-sub">We're looking for passionate young leaders aged 15–30 from El Salvador City or anywhere in Misamis Oriental who are ready to serve, lead, and grow.</p>
+  <div class="eligibility">
+    <h4>Eligibility Requirements</h4>
+    <ul>
+      <li>Must be 15–30 years old</li>
+      <li>Resident of El Salvador City or any municipality in Misamis Oriental</li>
+      <li>Not a member of any political youth organization (e.g., United Youth, Paglaum Youth)</li>
+      <li>Willing to commit to YOLO's vision, mission, and values</li>
+      <li>Preference given to active student leaders or community youth leaders</li>
+    </ul>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><p>Submit online application form</p></div>
+    <div class="step"><div class="step-num">2</div><p>Attend an Information Session on youth leadership</p></div>
+    <div class="step"><div class="step-num">3</div><p>Undergo a membership interview</p></div>
+    <div class="step"><div class="step-num">4</div><p>Attend the membership orientation</p></div>
+    <div class="step"><div class="step-num">5</div><p>Complete 2-month probationary period</p></div>
+    <div class="step"><div class="step-num">6</div><p>Take your oath at the YOLO Convergence</p></div>
+  </div>
+  <p style="font-size:13px;color:#8ab0a4;margin-bottom:16px;">Monthly membership fee: ₱50.00</p>
+  <a href="https://forms.gle/5cSyioHg3jkzKzUL8" target="_blank" class="btn-primary">Apply Now →</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="centered" style="margin-bottom:36px;">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact & Important Dates</h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div><h4>Email</h4><p>youthleadersorganizationyolo@gmail.com</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div><h4>Principal Office</h4><p>El Salvador City, Misamis Oriental, Philippines</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🗓️</div>
+        <div><h4>Monthly Meetings</h4><p>First Saturday of every month</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📋</div>
+        <div><h4>Membership Application</h4><p><a href="https://forms.gle/5cSyioHg3jkzKzUL8" target="_blank" style="color:var(--teal);text
